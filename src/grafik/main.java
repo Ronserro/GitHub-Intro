@@ -44,7 +44,7 @@ public class main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		// Ändra siffran här nere till 1,2,3 eller 4 beroende på vilken vy du vill se!
-		makeView3();
+		makeView4();
 
 		primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
 		primaryStage.show();
@@ -99,6 +99,26 @@ public class main extends Application {
 		 * 		 TIPS: Börja i mitten och gå snett uppåt.
 		 */
 		
+		int rings = 100;
+
+		for (int i = 1; i >= rings; i++) {
+
+			double radius = WIDTH / rings / 2;
+
+			Circle cir = new Circle(i * radius);
+
+			int r = (int) (Math.random() * 255);
+			int g = (int) (Math.random() * 255);
+			int b = (int) (Math.random() * 255);
+			cir.setFill(Color.rgb(r, g, b));
+			
+			cir.setTranslateX(WIDTH/2);
+
+			cir.setTranslateY(WIDTH/2);
+
+			root.getChildren().add(cir);
+
+		}
 		
 	}
 
@@ -141,6 +161,35 @@ public class main extends Application {
 		 * TODO: Typ samma som makeView1 fast med Circle istället för Rectangle,
 		 * eller hur??
 		 */
+		int rows = 8;
+		int cols = 8;
+
+		double width = WIDTH / cols;
+		double height = HEIGHT / rows;
+
+		for (int row = 0; row < rows; row++) {
+
+			for (int col = 0; col < cols; col++) {
+
+				// Skapa en ny Rectangle
+				Circle rect = new Circle(width/2);
+
+				// Flytta rect i x-led så den kommer rätt
+				rect.setTranslateX(col * width + 37.5);
+
+				// Flytta rect i y-led så den kommer rätt
+				rect.setTranslateY(row * height + 37.5);
+
+				// Färglägg med en random färg
+				int r = (int) (Math.random() * 255);
+				int g = (int) (Math.random() * 255);
+				int b = (int) (Math.random() * 255);
+				rect.setFill(Color.rgb(r, g, b));
+
+				// Lägg till rect så den syns i fönstret
+				root.getChildren().add(rect);
+			}
+		}
 
 	}
 
