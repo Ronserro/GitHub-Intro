@@ -44,7 +44,7 @@ public class main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		// Ändra siffran här nere till 1,2,3 eller 4 beroende på vilken vy du vill se!
-		makeView4();
+		makeView2();
 
 		primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
 		primaryStage.show();
@@ -89,49 +89,53 @@ public class main extends Application {
 		}
 
 	}
-	
+
 	private void makeView2(){
-		
+
 		/*
 		 * TODO: Samma som 3 fast varje Circle måste flyttas olika
 		 * 		 i x-led och y-led för att hamna på rätt ställe.
 		 * 
 		 * 		 TIPS: Börja i mitten och gå snett uppåt.
 		 */
-		
-		int rings = 100;
 
-		for (int i = 1; i >= rings; i++) {
+		int rings = 200;
+		double coordinates = 0;
+		double radius = WIDTH/2;
+		double increase = (WIDTH/2)/rings;
 
-			double radius = WIDTH / rings / 2;
+		for (int i = rings; i > 0; i--) {
 
-			Circle cir = new Circle(i * radius);
+			Circle cir = new Circle(radius);
 
 			int r = (int) (Math.random() * 255);
 			int g = (int) (Math.random() * 255);
 			int b = (int) (Math.random() * 255);
 			cir.setFill(Color.rgb(r, g, b));
-			
-			cir.setTranslateX(WIDTH/2);
 
-			cir.setTranslateY(WIDTH/2);
+			cir.setTranslateX(WIDTH/2-coordinates);
+
+			cir.setTranslateY(WIDTH/2-coordinates);
 
 			root.getChildren().add(cir);
 
+			coordinates=coordinates+increase;
+			radius=radius-increase;
+
 		}
-		
+
 	}
 
 	private void makeView3() {
 
 		/*
-		 * TODO: Om alla cirklar bara kunde flyttas till mitten av fönstret
+		 * TODO: Om alla cirklar bara kunde cordslyttas till mitten av fönstret
 		 * 		 skulle det ju se bättre ut? 
 		 * 		 Sedan måste mellanrummet mellan ringarna minska också...
 		 */
 
 
-		
+
 		int rings = 100;
 
 		for (int i = rings; i >= 0; i--) {
@@ -144,7 +148,7 @@ public class main extends Application {
 			int g = (int) (Math.random() * 255);
 			int b = (int) (Math.random() * 255);
 			cir.setFill(Color.rgb(r, g, b));
-			
+
 			cir.setTranslateX(WIDTH/2);
 
 			cir.setTranslateY(WIDTH/2);
