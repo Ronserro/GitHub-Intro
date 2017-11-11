@@ -44,11 +44,10 @@ public class main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		// Ändra siffran här nere till 1,2,3 eller 4 beroende på vilken vy du vill se!
-		makeView2();
+		makeView4();
 
 		primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
 		primaryStage.show();
-
 	}
 
 	private void makeView1() {
@@ -87,7 +86,6 @@ public class main extends Application {
 				root.getChildren().add(rect);
 			}
 		}
-
 	}
 
 	private void makeView2(){
@@ -104,7 +102,7 @@ public class main extends Application {
 		double radius = WIDTH/2;
 		double increase = (WIDTH/2)/rings;
 
-		for (int i = rings; i > 0; i--) {
+		for (int i = rings; i >= 0; i--) {
 
 			Circle cir = new Circle(radius);
 
@@ -121,9 +119,7 @@ public class main extends Application {
 
 			coordinates=coordinates+increase;
 			radius=radius-increase;
-
 		}
-
 	}
 
 	private void makeView3() {
@@ -133,8 +129,6 @@ public class main extends Application {
 		 * 		 skulle det ju se bättre ut? 
 		 * 		 Sedan måste mellanrummet mellan ringarna minska också...
 		 */
-
-
 
 		int rings = 100;
 
@@ -154,9 +148,7 @@ public class main extends Application {
 			cir.setTranslateY(WIDTH/2);
 
 			root.getChildren().add(cir);
-
 		}
-
 	}
 
 	private void makeView4() {
@@ -165,6 +157,7 @@ public class main extends Application {
 		 * TODO: Typ samma som makeView1 fast med Circle istället för Rectangle,
 		 * eller hur??
 		 */
+		
 		int rows = 8;
 		int cols = 8;
 
@@ -179,10 +172,10 @@ public class main extends Application {
 				Circle rect = new Circle(width/2);
 
 				// Flytta rect i x-led så den kommer rätt
-				rect.setTranslateX(col * width + 37.5);
+				rect.setTranslateX(col * width + width/2);
 
 				// Flytta rect i y-led så den kommer rätt
-				rect.setTranslateY(row * height + 37.5);
+				rect.setTranslateY(row * height + width/2);
 
 				// Färglägg med en random färg
 				int r = (int) (Math.random() * 255);
@@ -194,11 +187,9 @@ public class main extends Application {
 				root.getChildren().add(rect);
 			}
 		}
-
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 }
